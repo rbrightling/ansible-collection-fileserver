@@ -1,0 +1,111 @@
+{{ ansible_managed | comment }}
+{%  macro nfs_conf_options(option, value) -%}
+{% if value is sameas True %}
+{{ option }}=y
+{% elif value is sameas False %}
+{{ option }}=n
+{% elif value is not none %}
+{{ option }}={{ value }}
+{% endif %}
+{%- endmacro -%}
+# This is a general configuration for the
+# NFS daemons and tools
+#
+[general]
+{{ nfs_conf_options("pipefs-directory", nfs_general_pipefs_directory) -}}
+#
+[nfsrahead]
+{{ nfs_conf_options("nfs", nfs_nfsrahead_nfs) -}}
+{{ nfs_conf_options("nfs4", nfs_nfsrahead_nfs4) -}}
+#
+[exports]
+{{ nfs_conf_options("rootdir", nfs_exports_rootdir) -}}
+#
+[exportfs]
+{{ nfs_conf_options("debug", nfs_exportfs_debug) -}}
+# debug=0
+#
+[gssd]
+{{ nfs_conf_options("verbosity", nfs_gssd_verbosity) -}}
+{{ nfs_conf_options("rpc-verbosity", nfs_gssd_rpc_verbosity) -}}
+{{ nfs_conf_options("use-memcache", nfs_gssd_use_memcache) -}}
+{{ nfs_conf_options("use-machine-creds", nfs_gssd_use_machine_creds) -}}
+{{ nfs_conf_options("use-gss-proxy", nfs_gssd_use_gss_proxy) -}}
+{{ nfs_conf_options("avoid-dns", nfs_gssd_avoid_dns) -}}
+{{ nfs_conf_options("limit-to-legacy-enctypes", nfs_gssd_limit_to_legacy_enctypes) -}}
+{{ nfs_conf_options("context-timeout", nfs_gssd_context_timeout) -}}
+{{ nfs_conf_options("rpc-timeout", nfs_gssd_rpc_timeout) -}}
+{{ nfs_conf_options("keytab-file", nfs_gssd_keytab_file) -}}
+{{ nfs_conf_options("cred-cache-directory", nfs_gssd_cred_cache_directory) -}}
+{{ nfs_conf_options("preferred-realm", nfs_gssd_preferred_realm) -}}
+{{ nfs_conf_options("set-home", nfs_gssd_set_home) -}}
+{{ nfs_conf_options("upcall-timeout", nfs_gssd_upcall_timeout) -}}
+{{ nfs_conf_options("cancel-timed-out-upcalls", nfs_gssd_cancel_timed_out_upcalls) -}}
+#
+[lockd]
+{{ nfs_conf_options("port", nfs_lockd_port) -}}
+{{ nfs_conf_options("udp-port", nfs_lockd_udp_port) -}}
+#
+[exportd]
+{{ nfs_conf_options("debug", nfs_exportd_debug) -}}
+{{ nfs_conf_options("manage-gids", nfs_exportd_manage_gids) -}}
+{{ nfs_conf_options("state-directory-path", nfs_exportd_state_directory_path) -}}
+{{ nfs_conf_options("threads", nfs_exportd_threads) -}}
+{{ nfs_conf_options("cache-use-ipaddr", nfs_exportd_cache_use_ipaddr) -}}
+{{ nfs_conf_options("ttl", nfs_exportd_ttl) -}}
+#
+[mountd]
+{{ nfs_conf_options("debug", nfs_mountd_debug) -}}
+{{ nfs_conf_options("manage-gids", nfs_mountd_manage_gids) -}}
+{{ nfs_conf_options("descriptors", nfs_mountd_descriptors) -}}
+{{ nfs_conf_options("port", nfs_mountd_port) -}}
+{{ nfs_conf_options("threads", nfs_mountd_threads) -}}
+{{ nfs_conf_options("reverse-lookup", nfs_mountd_reverse_lookup) -}}
+{{ nfs_conf_options("state-directory-path", nfs_mountd_state_directory_path) -}}
+{{ nfs_conf_options("ha-callout", nfs_mountd_ha_callout) -}}
+{{ nfs_conf_options("cache-use-ipaddr", nfs_mountd_cache_use_ipaddr) -}}
+{{ nfs_conf_options("ttl", nfs_mountd_ttl) -}}
+#
+[nfsdcld]
+{{ nfs_conf_options("debug", nfs_nfsdcld_debug) -}}
+{{ nfs_conf_options("debug", nfs_nfsdcld_storagedir) -}}
+#
+[nfsdcltrack]
+{{ nfs_conf_options("debug", nfs_nfsdcltrack_debug) -}}
+{{ nfs_conf_options("debug", nfs_nfsdcltrack_storagedir) -}}
+#
+[nfsd]
+{{ nfs_conf_options("debug", nfs_nfsd_debug) -}}
+{{ nfs_conf_options("threads", nfs_nfsd_threads) -}}
+{{ nfs_conf_options("host", nfs_nfsd_host) -}}
+{{ nfs_conf_options("port", nfs_nfsd_port) -}}
+{{ nfs_conf_options("grace-time", nfs_nfsd_grace_time) -}}
+{{ nfs_conf_options("lease-time", nfs_nfsd_lease_time) -}}
+{{ nfs_conf_options("udp", nfs_nfsd_udp) -}}
+{{ nfs_conf_options("tcp", nfs_nfsd_tcp) -}}
+{{ nfs_conf_options("vers3", nfs_nfsd_vers3) -}}
+{{ nfs_conf_options("vers4.0", nfs_nfsd_vers4_0) -}}
+{{ nfs_conf_options("vers4.1", nfs_nfsd_vers4_1) -}}
+{{ nfs_conf_options("vers4.2", nfs_nfsd_vers4_2) -}}
+{{ nfs_conf_options("rdma", nfs_nfsd_rdma) -}}
+{{ nfs_conf_options("rdma-port", nfs_nfsd_rdma_port) -}}
+
+[statd]
+{{ nfs_conf_options("debug", nfs_statd_debug) -}}
+{{ nfs_conf_options("port", nfs_statd_port) -}}
+{{ nfs_conf_options("outgoing-port", nfs_statd_outgoing_port) -}}
+{{ nfs_conf_options("name", nfs_statd_name) -}}
+{{ nfs_conf_options("state-directory-path", nfs_statd_state_directory_path) -}}
+{{ nfs_conf_options("ha-callout", nfs_statd_ha_callout) -}}
+{{ nfs_conf_options("no-notify", nfs_statd_no_notify) -}}
+#
+[sm-notify]
+{{ nfs_conf_options("debug", nfs_sm_notify_debug) -}}
+{{ nfs_conf_options("debug", nfs_sm_notify_force) -}}
+{{ nfs_conf_options("debug", nfs_sm_notify_retry_time) -}}
+{{ nfs_conf_options("debug", nfs_sm_notify_outgoing_port) -}}
+{{ nfs_conf_options("debug", nfs_sm_notify_outgoing_addr) -}}
+{{ nfs_conf_options("debug", nfs_sm_notify_life_grace) -}}
+#
+[svcgssd]
+{{ nfs_conf_options("debug", nfs_svcgssd_principal) -}}

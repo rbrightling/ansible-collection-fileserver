@@ -1,0 +1,34 @@
+---
+namespace: rbrightling
+name: fileserver
+version: 0.1.0
+
+readme: README.md
+
+authors:
+  - Robert Brightling <dev@robert.brightling.me.uk>
+
+
+description: Collection of roles for enabling filesharing
+license:
+  - LGPL-3.0-or-later
+
+tags:
+  - filesharing
+  - fileserver
+  - linux
+
+dependencies: {}
+
+# The URL of the originating SCM repository
+repository: https://github.com/rbrightling/ansible-collection-fileserver
+documentation: https://github.com/rbrightling/ansible-collection-fileserver
+homepage: https://github.com/rbrightling/ansible-collection-fileserver
+issues: https://github.com/rbrightling/ansible-collection-fileserver/issues
+
+build_ignore:
+  - molecule
+  - tox.ini
+  - .tox
+  - .github
+  - pytestdebug.log

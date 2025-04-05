@@ -1,0 +1,105 @@
+---
+# defaults file for nfs
+
+nfs_need_statd: false
+nfs_need_idmapd: true
+
+nfs_rpcnfsdopts: "-N 2 -N 3"
+nfs_rpcmountdopts: "--manage-gids -N 2 -N 3"
+
+# exports
+nfs_exports: {}
+#  - mount: '/mount'
+#    host: 192.168.0.0/24
+#    options:
+#      - rw
+#      - no_root_squash
+#      - no_subtree_check
+#      - crossmnt
+#      - fsid=0
+
+# NFS options
+# general
+nfs_general_pipefs_directory: "/run/rpc_pipefs"
+# nfsrahead
+nfs_nfsrahead_nfs: null  # 15000
+nfs_nfsrahead_nfs4: null  # 16000
+# exports
+nfs_exports_rootdir: null
+# exportfs
+nfs_exportfs_debug: null  # 0
+# gssd
+nfs_gssd_verbosity: null
+nfs_gssd_rpc_verbosity: null
+nfs_gssd_use_memcache: null  # 0
+nfs_gssd_use_machine_creds: null  # 1
+nfs_gssd_use_gss_proxy: null  # 0
+nfs_gssd_avoid_dns: null  # 0
+nfs_gssd_limit_to_legacy_enctypes: null  # 0
+nfs_gssd_context_timeout: null  # 0
+nfs_gssd_rpc_timeout: null  # 5
+nfs_gssd_keytab_file: null  # /etc/rb5.keytab
+nfs_gssd_cred_cache_directory: null  # 0
+nfs_gssd_preferred_realm: null
+nfs_gssd_set_home: null  # 1
+nfs_gssd_upcall_timeout: null
+nfs_gssd_cancel_timed_out_upcalls: null  # 0
+# lockd
+nfs_lockd_port: null  # 0
+nfs_lockd_udp_port: null  # 0
+# exportd
+nfs_exportd_debug: null
+nfs_exportd_manage_gids: null
+nfs_exportd_state_directory_path: null
+nfs_exportd_threads: null
+nfs_exportd_cache_use_ipaddr: null
+nfs_exportd_ttl: null
+# mountd
+nfs_mountd_debug: null
+nfs_mountd_manage_gids: true
+nfs_mountd_descriptors: null
+nfs_mountd_port: null  # 0
+nfs_mountd_threads: null
+nfs_mountd_reverse_lookup: null
+nfs_mountd_state_directory_path: null
+nfs_mountd_ha_callout: null
+nfs_mountd_cache_use_ipaddr: null  # n
+nfs_mountd_ttl: null  # 1800
+# nfsdcld
+nfs_nfsdcld_debug: null  # 0
+nfs_nfsdcld_storagedir: null  # /var/lib/nfs/nfsdcld
+# nfsdcltrack
+nfs_nfsdcltrack_debug: null  # 0
+nfs_nfsdcltrack_storagedir: null  # /var/lib/nfs/nfsdcltrack
+# nfsd
+nfs_nfsd_debug: null  # 0
+nfs_nfsd_threads: null  # 8
+nfs_nfsd_host: null
+nfs_nfsd_port: null  # 0
+nfs_nfsd_grace_time: null  # 90
+nfs_nfsd_lease_time: null  # 90
+nfs_nfsd_udp: null  # n
+nfs_nfsd_tcp: null  # y
+nfs_nfsd_vers3: false
+nfs_nfsd_vers4_0: false
+nfs_nfsd_vers4_1: false
+nfs_nfsd_vers4_2: true
+nfs_nfsd_rdma: null  # n
+nfs_nfsd_rdma_port: null  # 20049
+# statd
+nfs_statd_debug: null
+nfs_statd_port: null
+nfs_statd_outgoing_port: null
+nfs_statd_name: null
+nfs_statd_state_directory_path: null
+nfs_statd_ha_callout: null
+nfs_statd_no_notify: null
+# sm-notify
+nfs_sm_notify_debug: null  # 0
+nfs_sm_notify_force: null  # 0
+nfs_sm_notify_retry_time: null  # 900
+nfs_sm_notify_outgoing_port: null
+nfs_sm_notify_outgoing_addr: null
+nfs_sm_notify_life_grace: null  # y
+# svcgssd
+nfs_svcgssd_principal: null

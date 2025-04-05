@@ -1,0 +1,23 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    nfs_mount_path: "/srv/nfs"
+  tasks:
+    - name: "Create nfs directory"
+      ansible.builtin.file:
+        path: "{{ nfs_mount_path }}"
+        state: "directory"
+    - name: "Include rbrightling.fileserver.nfs"
+      ansible.builtin.include_role:
+        name: "nfs"
+      vars:
+        nfs_exports:
+          - mount: "{{ nfs_mount_path }}"
+            host: "*"
+            options:
+              - rw
+              - root_squash
+              - subtree_check
+              - sync
+              - fsid=0

@@ -1,0 +1,5 @@
+# {{ ansible_managed }}
+#
+{% for export in nfs_exports %}
+{{ export.mount }} {{ export.host }}({{ export.options | join(',') }})
+{% endfor %}

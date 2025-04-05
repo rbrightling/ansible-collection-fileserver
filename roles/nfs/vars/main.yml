@@ -1,0 +1,5 @@
+---
+# vars file for samba
+
+nfs__package: nfs-kernel-server
+nfs__service: nfs-server

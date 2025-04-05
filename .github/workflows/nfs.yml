@@ -1,0 +1,16 @@
+---
+name: "rbrightling.fileserver.nfs"
+
+on:
+  push:
+    paths:
+      - 'roles/nsf/**'
+      - 'molecule/nsf/**'
+      - '.github/workflows/nsf.yml'
+      - 'tox.ini'
+
+jobs:
+  call_reusable_workflow:
+    uses: ./.github/workflows/reusable-ansible-test-role.yml
+    with:
+      role-name: 'nfs'

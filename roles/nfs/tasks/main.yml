@@ -1,0 +1,70 @@
+---
+# tasks file for samba
+
+- name: Install nfs
+  ansible.builtin.package:
+    name: "{{ nfs__package }}"
+    state: present
+  become: true
+  tags:
+    - install
+
+- name: Configure nfs-common
+  ansible.builtin.template:
+    src: nfs-common.default.j2
+    dest: /etc/default/nfs-common
+    owner: root
+    group: root
+    mode: "0644"
+  become: true
+  notify:
+    - restart nfs service
+  tags:
+    - configure
+
+- name: Configure nfs-kernel-server
+  ansible.builtin.template:
+    src: nfs-kernel-server.default.j2
+    dest: /etc/default/nfs-kernel-server
+    owner: root
+    group: root
+    mode: "0644"
+  become: true
+  notify:
+    - restart nfs service
+  tags:
+    - configure
+
+- name: Configure nfs.conf
+  ansible.builtin.template:
+    src: nfs.conf.j2
+    dest: /etc/nfs.conf
+    owner: root
+    group: root
+    mode: "0644"
+  become: true
+  notify:
+    - restart nfs service
+  tags:
+    - configure
+
+
+- name: Configure exports
+  ansible.builtin.template:
+    src: exports.j2
+    dest: /etc/exports
+    owner: root
+    group: root
+    mode: "0644"
+  become: true
+  notify:
+    - restart nfs service
+  tags:
+    - configure
+
+- name: Start and enable nfs service
+  ansible.builtin.service:
+    name: "{{ nfs__service }}"
+    enabled: true
+    state: started
+  become: true
