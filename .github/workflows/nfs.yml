@@ -4,9 +4,9 @@ name: "rbrightling.fileserver.nfs"
 on:
   push:
     paths:
-      - 'roles/nsf/**'
-      - 'molecule/nsf/**'
-      - '.github/workflows/nsf.yml'
+      - 'roles/nfs/**'
+      - 'molecule/nfs/**'
+      - '.github/workflows/nfs.yml'
       - 'tox.ini'
 
 jobs:
