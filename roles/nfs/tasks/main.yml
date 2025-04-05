@@ -18,7 +18,7 @@
     mode: "0644"
   become: true
   notify:
-    - restart nfs service
+    - Restart nfs service
   tags:
     - configure
 
@@ -31,7 +31,7 @@
     mode: "0644"
   become: true
   notify:
-    - restart nfs service
+    - Restart nfs service
   tags:
     - configure
 
@@ -44,7 +44,7 @@
     mode: "0644"
   become: true
   notify:
-    - restart nfs service
+    - Restart nfs service
   tags:
     - configure
 
@@ -58,7 +58,7 @@
     mode: "0644"
   become: true
   notify:
-    - restart nfs service
+    - Restart nfs service
   tags:
     - configure
 
