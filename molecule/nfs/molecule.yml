@@ -13,11 +13,9 @@ platforms:
     image: ${MOLECULE_DISTRO:-debian:latest}
     command: "/lib/systemd/systemd"
     systemd: true
-    capabilities:
-      - SYS_ADMIN
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: true
+    privileged: false
     pre_build_image: ${MOLECULE_PRE_BUILD_IMAGE:-false}
 provisioner:
   name: ansible
