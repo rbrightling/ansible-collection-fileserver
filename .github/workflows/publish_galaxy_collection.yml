@@ -20,7 +20,7 @@ jobs:
           architecture: 'x64'
       - name: Install Ansible
         run: |
-          pip install ansible-base
+          pip install ansible
       - name: Build galaxy collection
         run: |
           ansible-galaxy collection build
